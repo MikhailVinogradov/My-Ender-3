@@ -1,5 +1,10 @@
 module.exports = {
   board_env: "STM32F103RE_creality", // Окружение для платы 4.2.7
+  active: true,
+  meta: {
+    stable_name: "ender_3_4.2.7-sprite-crtouch-{{marlin_version}}-{{uid}}",
+    nightly_name: "ender_3_4.2.7-sprite-crtouch-{{current_date}}-{{uid}}"
+  },
   based_on: {
     repo: "https://github.com",
     path: "/config/examples/Creality/Ender-3/CrealityV427/", // Базовая конфигурация Ender 3 (4.2.7)
@@ -12,7 +17,7 @@ module.exports = {
       ["GRID_MAX_POINTS_X", 5], // Точная сетка замеров 5х5 вместо 3х3
       ["DEFAULT_AXIS_STEPS_PER_UNIT", [80, 80, 400, 424.9]], // Шаги для Sprite (E424.9)
       ["NOZZLE_TO_PROBE_OFFSET", [-36.5, -40.0, 0]], // Смещение датчика Sprite
-      ["PROBING_MARGIN", 40], // Уменьшенный отступ от краев до 20 мм
+      ["PROBING_MARGIN", 20], // Уменьшенный отступ от краев до 20 мм
       ["X_BED_SIZE", 235], // Верный размер стола по оси X
       ["Y_BED_SIZE", 235], // Верный размер стола по оси Y
       ["TEMP_SENSOR_0", 5], // Высокотемпературный термистор Sprite Pro (100k Honeywell)
@@ -28,3 +33,4 @@ module.exports = {
     ]
   }
 };
+
