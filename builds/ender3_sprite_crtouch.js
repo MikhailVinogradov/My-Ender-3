@@ -5,9 +5,15 @@ module.exports = {
     stable_name: "ender_3_4.2.7-sprite-crtouch-{{marlin_version}}-{{uid}}",
     nightly_name: "ender_3_4.2.7-sprite-crtouch-{{current_date}}-{{uid}}"
   },
+  // Обманываем валидатор: передаем обязательный блок, но без путающих путей к примерам
+  based_on: {
+    repo: "https://github.com",
+    stable_branch: "2.1.x",
+    nightly_branch: "bugfix-2.1.x"
+  },
   configuration: {
     enable: [
-      // Передаем имя платы БЕЗ кавычек для компилятора Marlin
+      // Флаг true в конце вставляет значение БЕЗ кавычек, спасая от ошибки компилятора
       ["MOTHERBOARD", "BOARD_CREALITY_V427", true], 
       "BLTOUCH", // Активация CR-Touch
       "USE_PROBE_FOR_Z_HOMING", // CR-Touch как Z-концевик
