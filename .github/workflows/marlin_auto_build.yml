@@ -1,0 +1,12 @@
+name: marlin_auto_build
+on:
+  push:
+    paths:
+      - 'builds/**' # Запуск сборки при изменении файлов в папке builds
+  schedule:
+    - cron: '30 3 * * *' # Автоматический запуск каждую ночь в 03:30 UTC
+jobs:
+  create_builds:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: zisismaras/marlin_auto_build@v1
