@@ -7,7 +7,9 @@ module.exports = {
   },
   based_on: {
     repo: "https://github.com",
-    path: "/config/examples/Creality/Ender-3/CrealityV427/", // Базовая конфигурация Ender 3 (4.2.7)
+    path: "/config/examples/Creality/Ender-3/CrealityV427/",
+    stable_branch: "release-{{marlin_version}}", // Исправлено: добавлено поле
+    nightly_branch: "bugfix-2.1.x" // Исправлено: добавлено поле
   },
   configuration: {
     enable: [
