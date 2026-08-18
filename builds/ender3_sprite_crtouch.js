@@ -5,17 +5,16 @@ module.exports = {
     stable_name: "ender_3_4.2.7-sprite-crtouch-{{marlin_version}}-{{uid}}",
     nightly_name: "ender_3_4.2.7-sprite-crtouch-{{current_date}}-{{uid}}"
   },
-  // Полная структура, удовлетворяющая валидатор сборщика
   based_on: {
     repo: "https://github.com",
-    path: "/", // Указываем корень, чтобы валидатор не ругался, а сборщик не искал папки примеров
+    path: "/", 
     stable_branch: "2.1.x",
     nightly_branch: "bugfix-2.1.x"
   },
   configuration: {
     enable: [
-      // Флаг true в конце — это самое главное. Он вставляет текст БЕЗ кавычек в код Marlin
-      ["MOTHERBOARD", "BOARD_CREALITY_V427", true], 
+      // Исправленный синтаксис: объект { value: ... } заставит утилиту вставить имя без кавычек
+      ["MOTHERBOARD", { value: "BOARD_CREALITY_V427" }], 
       "BLTOUCH", // Активация CR-Touch
       "USE_PROBE_FOR_Z_HOMING", // CR-Touch как Z-концевик
       "AUTO_BED_LEVELING_BILINEAR", // Автоуровень
@@ -35,9 +34,6 @@ module.exports = {
   configuration_adv: {
     enable: [
       "INVERT_E0_DIR" // Обратное вращение мотора Sprite
-    ]
-  }
-};
     ]
   }
 };
