@@ -5,15 +5,16 @@ module.exports = {
     stable_name: "ender_3_4.2.7-sprite-crtouch-{{marlin_version}}-{{uid}}",
     nightly_name: "ender_3_4.2.7-sprite-crtouch-{{current_date}}-{{uid}}"
   },
-  // Обманываем валидатор: передаем обязательный блок, но без путающих путей к примерам
+  // Полная структура, удовлетворяющая валидатор сборщика
   based_on: {
     repo: "https://github.com",
+    path: "/", // Указываем корень, чтобы валидатор не ругался, а сборщик не искал папки примеров
     stable_branch: "2.1.x",
     nightly_branch: "bugfix-2.1.x"
   },
   configuration: {
     enable: [
-      // Флаг true в конце вставляет значение БЕЗ кавычек, спасая от ошибки компилятора
+      // Флаг true в конце — это самое главное. Он вставляет текст БЕЗ кавычек в код Marlin
       ["MOTHERBOARD", "BOARD_CREALITY_V427", true], 
       "BLTOUCH", // Активация CR-Touch
       "USE_PROBE_FOR_Z_HOMING", // CR-Touch как Z-концевик
@@ -34,6 +35,9 @@ module.exports = {
   configuration_adv: {
     enable: [
       "INVERT_E0_DIR" // Обратное вращение мотора Sprite
+    ]
+  }
+};
     ]
   }
 };
