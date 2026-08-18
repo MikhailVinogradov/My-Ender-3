@@ -5,19 +5,10 @@ module.exports = {
     stable_name: "ender_3_4.2.7-sprite-crtouch-{{marlin_version}}-{{uid}}",
     nightly_name: "ender_3_4.2.7-sprite-crtouch-{{current_date}}-{{uid}}"
   },
-  based_on: {
-    repo: "https://github.com",
-    path: "/config/examples/Creality/Ender-3/CrealityV427/", // База конкретно для вашей платы 4.2.7
-    stable_branch: "release-{{marlin_version}}",
-    nightly_branch: "bugfix-2.1.x"
-  },
-  // Принудительно заставляем сборщик взять файлы конфигурации именно из папки CrealityV427
-  custom_config: {
-    configuration: "/config/examples/Creality/Ender-3/CrealityV427/Configuration.h",
-    configuration_adv: "/config/examples/Creality/Ender-3/CrealityV427/Configuration_adv.h"
-  },
   configuration: {
     enable: [
+      // Передаем имя платы БЕЗ кавычек для компилятора Marlin
+      ["MOTHERBOARD", "BOARD_CREALITY_V427", true], 
       "BLTOUCH", // Активация CR-Touch
       "USE_PROBE_FOR_Z_HOMING", // CR-Touch как Z-концевик
       "AUTO_BED_LEVELING_BILINEAR", // Автоуровень
@@ -36,7 +27,7 @@ module.exports = {
   },
   configuration_adv: {
     enable: [
-      "INVERT_E0_DIR" // Включаем реверс мотора экструдера Sprite напрямую
+      "INVERT_E0_DIR" // Обратное вращение мотора Sprite
     ]
   }
 };
